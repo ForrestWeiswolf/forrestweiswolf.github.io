@@ -1,2 +1,7 @@
 name: Forrest Wolf
 markdown: kramdown
+defaults:
+  - scope:
+      path: "assets/images"
+    values:
+      image: true

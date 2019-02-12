@@ -3,9 +3,13 @@ body {
   width: 85%;
 }
 
-
 @media (max-width: 900px) {
   body {
     width: 95%;
   }
+}
+
+.contact-icon {
+  width: 1.4em;
+  height: 1.4em;
 }
