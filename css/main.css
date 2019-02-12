@@ -1,0 +1,11 @@
+body {
+  margin: auto;
+  width: 85%;
+}
+
+
+@media (max-width: 900px) {
+  body {
+    width: 95%;
+  }
+}
