@@ -1,20 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: auto;
   width: 90%;
-  box-sizing: border-box;
 }
 
 main {
   flex-direction: column;
+  display: flex;
 }
 
 nav {
-  padding: 1em;
+  padding: 1em 0;
+  display: flex;
 }
 
 nav a {
   border-right: solid grey 2px;
-  padding: 2em;
+  padding: 1em;
+  width: 25%;
+  text-align: center;
 }
 
 nav a:last-child{
@@ -34,10 +41,6 @@ nav a:last-child{
 .contact-icon {
   width: 1.4em;
   height: 1.4em;
-}
-
-main {
-  display: flex;
 }
 
 .project h2 {
