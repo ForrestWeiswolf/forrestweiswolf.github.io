@@ -1,6 +1,28 @@
 body {
   margin: auto;
-  width: 85%;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+main {
+  flex-direction: column;
+}
+
+nav {
+  padding: 1em;
+}
+
+nav a {
+  border-right: solid grey 2px;
+  padding: 2em;
+}
+
+nav a:last-child{
+  border-right: none;
+}
+
+#about{
+  display: flex;
 }
 
 @media (max-width: 900px) {
@@ -12,4 +34,21 @@ body {
 .contact-icon {
   width: 1.4em;
   height: 1.4em;
+}
+
+main {
+  display: flex;
+}
+
+.project h2 {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.project img {
+  height: 4em;
+  width: 4em;
+  display: inline-block;
+  /* align-self: flex-start; */
 }
