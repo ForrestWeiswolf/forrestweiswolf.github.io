@@ -29,21 +29,19 @@ nav a:last-child {
 }
 
 .left-side {
-  width: 40%
+  width: 37.5%
 }
 
 .right-side {
-  width: 60%
-}
-
-@media (max-width: 900px) {
-  body {
-    width: 95%;
-  }
+  width: 62.5%
 }
 
 #about {
   display: flex;
+}
+
+#summary {
+  padding: 0 1em;
 }
 
 .contact-icon {
@@ -62,4 +60,19 @@ nav a:last-child {
   width: 4em;
   display: inline-block;
   /* align-self: flex-start; */
+}
+
+@media (max-width: 900px) {
+  body {
+    width: 95%;
+  }
+  .left-side {
+    width: 100%;
+  }
+  .right-side {
+    width: 100%;
+  }
+  #about {
+    flex-direction: column-reverse;
+  }
 }
