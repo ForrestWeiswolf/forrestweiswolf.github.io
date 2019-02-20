@@ -49,17 +49,31 @@ nav a:last-child {
   height: 1.4em;
 }
 
+.project {
+  display: flex;
+  /* align-items: center;
+  vertical-align: middle; */
+}
+
 .project h2 {
   display: flex;
   align-items: center;
   vertical-align: middle;
+  align-content: space-around;
+  border: 1px solid grey;
+  padding: 1em;
 }
 
 .project img {
   height: 4em;
   width: 4em;
   display: inline-block;
+  margin: 1em;
   /* align-self: flex-start; */
+}
+
+.project-info{
+  padding: 1em;
 }
 
 @media (max-width: 900px) {
