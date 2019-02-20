@@ -24,18 +24,26 @@ nav a {
   text-align: center;
 }
 
-nav a:last-child{
+nav a:last-child {
   border-right: none;
 }
 
-#about{
-  display: flex;
+.left-side {
+  width: 40%
+}
+
+.right-side {
+  width: 60%
 }
 
 @media (max-width: 900px) {
   body {
     width: 95%;
   }
+}
+
+#about {
+  display: flex;
 }
 
 .contact-icon {
