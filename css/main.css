@@ -23,12 +23,12 @@ nav {
 nav a {
   border-right: solid #AACCBC 2px;
   padding: 1em;
-  width: 25%;
+  width: 33.33%;
   text-align: center;
 }
 
-nav a:last-child {
-  border-right: none;
+nav a:first-child {
+  border-left: solid #AACCBC 2px;
 }
 
 .left-side {
