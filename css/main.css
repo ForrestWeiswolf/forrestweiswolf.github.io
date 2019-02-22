@@ -1,11 +1,13 @@
 * {
   box-sizing: border-box;
+  /* background-color: slategray; */
 }
 
 body {
   margin: auto;
   width: 90%;
-  font-family: Palatino, "Palatino Linotype", Times, "Times New Roman", serif
+  font-family: Palatino, "Palatino Linotype", Times, "Times New Roman", serif;
+  background-color: seashell;
 }
 
 main {
@@ -19,7 +21,7 @@ nav {
 }
 
 nav a {
-  border-right: solid grey 2px;
+  border-right: solid #AACCBC 2px;
   padding: 1em;
   width: 25%;
   text-align: center;
@@ -61,7 +63,7 @@ nav a:last-child {
   align-items: center;
   vertical-align: middle;
   align-content: space-around;
-  border: 1px solid grey;
+  border: 1px solid #AACCBC;
   padding: 1em;
 }
 
