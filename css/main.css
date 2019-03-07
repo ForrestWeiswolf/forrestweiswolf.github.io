@@ -39,7 +39,7 @@ nav a:first-child {
   width: 62.5%
 }
 
-#about {
+.flex {
   display: flex;
 }
 
@@ -52,11 +52,10 @@ nav a:first-child {
   height: 1.4em;
 }
 
-.project {
-  display: flex;
-  /* align-items: center;
-  vertical-align: middle; */
-}
+/* .project {
+  align-items: center;
+  vertical-align: middle;
+} */
 
 .project h2 {
   display: flex;
