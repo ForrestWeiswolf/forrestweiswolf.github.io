@@ -91,4 +91,16 @@ nav a:first-child {
   #about {
     flex-direction: column-reverse;
   }
+  .project {
+    flex-direction: column;
+  }
+  .project img {
+    margin: 0.5em;
+  }
+  .project-info {
+    padding: 0.1em;
+  }
+  .project h2 {
+    padding: 0.5em;
+  }
 }
