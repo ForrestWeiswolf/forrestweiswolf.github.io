@@ -43,6 +43,10 @@ nav a:first-child {
   display: flex;
 }
 
+img {
+  max-width: 100%;
+}
+
 #avatar {
   /* max-height: 40vh;
   max-width: 40vh; */
