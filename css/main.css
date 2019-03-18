@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  background-color: #8090a0;
+  background-color: #758595;
   color: #eee;
 }
 
@@ -58,7 +58,7 @@ img {
 #avatar {
   /* max-height: 40vh;
   max-width: 40vh; */
-  border: 1px solid #C2CFDC;
+  border: 2px solid #C2CFDC;
   padding: 1em;
 }
 
@@ -81,7 +81,7 @@ img {
   align-items: center;
   vertical-align: middle;
   align-content: space-around;
-  border: 1px solid #C2CFDC;
+  border: 2px solid #C2CFDC;
   padding: 1em;
 }
 
