@@ -99,9 +99,6 @@ img {
   .right-side {
     width: 100%;
   }
-  #avatar {
-    max-width: 50%;
-  }
   #about {
     flex-direction: column-reverse;
   }
@@ -116,11 +113,5 @@ img {
   }
   .project h2 {
     padding: 0.5em;
-  }
-}
-
-@media (max-width: 400px) {
-  #avatar {
-    max-width: 100%;
   }
 }
