@@ -15,6 +15,14 @@ main {
   display: flex;
 }
 
+.flex {
+  display: flex;
+}
+
+img {
+  max-width: 100%;
+}
+
 nav {
   padding: 1em 0;
   display: flex;
@@ -39,34 +47,19 @@ nav a:first-child {
   width: 62.5%
 }
 
-.flex {
-  display: flex;
-}
-
-img {
-  max-width: 100%;
+.right-side section {
+  padding: 0 1em;
 }
 
 #avatar {
-  /* max-height: 40vh;
-  max-width: 40vh; */
   border: 2px solid #AACCBC;
   padding: 1em;
-}
-
-.right-side section {
-  padding: 0 1em;
 }
 
 .contact-icon {
   width: 1.4em;
   height: 1.4em;
 }
-
-/* .project {
-  align-items: center;
-  vertical-align: middle;
-} */
 
 .project h2 {
   display: flex;
@@ -82,7 +75,6 @@ img {
   width: 4em;
   display: inline-block;
   margin: 1em;
-  /* align-self: flex-start; */
 }
 
 .project-info {
@@ -93,10 +85,7 @@ img {
   body {
     width: 95%;
   }
-  .left-side {
-    width: 100%;
-  }
-  .right-side {
+  .left-side, .right-side {
     width: 100%;
   }
   #about {
