@@ -51,7 +51,7 @@ nav a:first-child {
   padding: 0 1em;
 }
 
-#avatar {
+.large-image {
   border: 2px solid #AACCBC;
   padding: 1em;
 }
