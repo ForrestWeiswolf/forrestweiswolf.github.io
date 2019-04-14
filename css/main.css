@@ -8,6 +8,7 @@ body {
   width: 90%;
   font-family: Palatino, "Palatino Linotype", Times, "Times New Roman", serif;
   background-color: seashell;
+  line-height: 1.4em;
 }
 
 main {
@@ -59,6 +60,14 @@ nav a:first-child {
 .contact-icon {
   width: 1.4em;
   height: 1.4em;
+}
+
+li{
+  padding-top: 0.4em;
+}
+
+li:first-child{
+  padding: 0em;
 }
 
 .project h2 {
