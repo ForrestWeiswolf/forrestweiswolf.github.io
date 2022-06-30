@@ -112,7 +112,9 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+# End of https://www.gitignore.io/api/node,macos
+
 # Jekyll build
 _site/
 
-# End of https://www.gitignore.io/api/node,macos
+.jekyll-cache/
