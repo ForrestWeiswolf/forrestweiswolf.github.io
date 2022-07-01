@@ -1,4 +1,5 @@
 name: Forrest Wolf
+title: Forrest Wolf
 markdown: kramdown
 defaults:
   - scope:
