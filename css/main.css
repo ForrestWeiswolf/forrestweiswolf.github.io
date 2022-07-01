@@ -7,7 +7,7 @@ body {
   margin: auto;
   width: 90%;
   font-family: Palatino, "Palatino Linotype", Times, "Times New Roman", serif;
-  background-color: seashell;
+  background-color: whitesmoke;
   line-height: 1.4em;
 }
 
@@ -30,14 +30,14 @@ nav {
 }
 
 nav a {
-  border-right: solid #AACCBC 2px;
+  border-right: solid #505DFA 2px;
   padding: 1em;
   width: 33.33%;
   text-align: center;
 }
 
-nav a:first-child {
-  border-left: solid #AACCBC 2px;
+nav a:last-child {
+  border-right: none;
 }
 
 .left-side {
@@ -53,7 +53,7 @@ nav a:first-child {
 }
 
 .large-image {
-  border: 2px solid #AACCBC;
+  border: 2px solid #505DFA;
   padding: 1em;
 }
 
@@ -75,13 +75,12 @@ li:first-child{
   align-items: center;
   vertical-align: middle;
   align-content: space-around;
-  border: 2px solid #AACCBC;
-  padding: 1em;
+  border: 2px solid #505DFA;
 }
 
 .project img {
-  height: 4em;
-  width: 4em;
+  height: 6em;
+  width: 6em;
   display: inline-block;
   margin: 1em;
 }
