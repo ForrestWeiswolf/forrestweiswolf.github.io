@@ -57,16 +57,11 @@ nav a:last-child {
   padding: 1em;
 }
 
-.contact-icon {
-  width: 1.4em;
-  height: 1.4em;
-}
-
-li{
+li {
   padding-top: 0.4em;
 }
 
-li:first-child{
+li:first-child {
   padding: 0em;
 }
 
