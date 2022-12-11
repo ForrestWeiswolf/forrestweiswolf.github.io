@@ -36,10 +36,6 @@ nav a {
   text-align: center;
 }
 
-nav a:last-child {
-  border-right: none;
-}
-
 .left-side {
   width: 37.5%
 }
@@ -106,4 +102,23 @@ li:first-child {
   .project h2 {
     padding: 0.5em;
   }
+}
+
+@media (min-width: 600px) {
+  nav a:last-child {
+    border-right: none;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-wrap: wrap;
+    padding: 0.1em;
+    margin: 0em;
+  }
+
+  nav a {
+    padding: 0.5em;
+  }
+
 }
