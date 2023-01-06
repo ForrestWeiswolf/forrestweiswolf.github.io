@@ -120,5 +120,15 @@ li:first-child {
   nav a {
     padding: 0.5em;
   }
+}
 
+.index {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.index div {
+  font-size: 2.1em;
+  padding: 1em;
 }
