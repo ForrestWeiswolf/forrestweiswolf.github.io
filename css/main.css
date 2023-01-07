@@ -41,7 +41,8 @@ nav a {
 }
 
 .right-side {
-  width: 62.5%
+  width: 62.5%;
+  margin: 0.5em;
 }
 
 .right-side section {
