@@ -9,6 +9,7 @@ body {
   font-family: Palatino, "Palatino Linotype", Times, "Times New Roman", serif;
   background-color: whitesmoke;
   line-height: 1.4em;
+  padding-bottom: 1em;
 }
 
 main {
@@ -22,6 +23,10 @@ main {
 
 img {
   max-width: 100%;
+}
+
+a:first-child {
+  padding: 1em 1em 1em 0;
 }
 
 nav {
