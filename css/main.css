@@ -25,10 +25,6 @@ img {
   max-width: 100%;
 }
 
-a:first-child {
-  padding: 1em 1em 1em 0;
-}
-
 nav {
   padding: 1em 0;
   display: flex;
@@ -39,6 +35,10 @@ nav a {
   padding: 1em;
   width: 33.33%;
   text-align: center;
+}
+
+nav > a:first-child {
+  padding-left: 0;
 }
 
 .left-side {
