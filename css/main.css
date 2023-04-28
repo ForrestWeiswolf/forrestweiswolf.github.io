@@ -53,7 +53,7 @@ nav a {
   text-align: center;
 }
 
-nav > a:first-child {
+nav>a:first-child {
   padding-left: 0;
 }
 
@@ -108,21 +108,28 @@ li:first-child {
   body {
     width: 95%;
   }
-  .left-side, .right-side {
+
+  .left-side,
+  .right-side {
     width: 100%;
   }
+
   #about {
     flex-direction: column-reverse;
   }
+
   .project {
     flex-direction: column;
   }
+
   .project img {
     margin: 0.5em;
   }
+
   .project-info {
     padding: 0.1em;
   }
+
   .project h2 {
     padding: 0.5em;
   }
