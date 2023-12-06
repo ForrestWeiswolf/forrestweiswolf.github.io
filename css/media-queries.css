@@ -1,0 +1,65 @@
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #252500;
+    color: #BBB;
+  }
+
+  a {
+    color: #AAAAFF;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #f5f5f5;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 95%;
+  }
+
+  .left-side,
+  .right-side {
+    width: 100%;
+  }
+
+  #about {
+    flex-direction: column-reverse;
+  }
+
+  .project {
+    flex-direction: column;
+  }
+
+  .project img {
+    margin: 0.5em;
+  }
+
+  .project-info {
+    padding: 0.1em;
+  }
+
+  .project h2 {
+    padding: 0.5em;
+  }
+}
+
+@media (min-width: 600px) {
+  nav a:last-child {
+    border-right: none;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-wrap: wrap;
+    padding: 0.1em;
+    margin: 0em;
+  }
+
+  nav a {
+    padding: 0.5em;
+  }
+}
