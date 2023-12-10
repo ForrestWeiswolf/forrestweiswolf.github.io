@@ -1,0 +1,77 @@
+---
+layout: no-navbar
+title: Test
+---
+<div>
+  <script defer>
+    const serializeUint8Array = (arr) => [...arr].map(btoa).join(',')
+
+    const deserializeUint8Array = (str) => new Uint8Array(str.split(',').map(atob))
+
+    const generateKey = () => window.crypto.subtle.generateKey(
+      {
+        name: "AES-GCM",
+        length: 128,
+      },
+      true, ["encrypt", "decrypt"],
+    )
+
+    const exportKey = async (key) => {
+      let exportedKey = await window.crypto.subtle.exportKey("raw", key)
+      exportedKey = new Uint8Array(exportedKey)
+      return serializeUint8Array(exportedKey)
+    }
+
+    const importKey = async (key) => {
+      const deserializedKey = deserializeUint8Array(key)
+
+      return window.crypto.subtle.importKey("raw", deserializedKey, "AES-GCM", true, [
+        "encrypt",
+        "decrypt",
+      ])
+    }
+
+    const encrypt = async (message, key) => {
+      const iv = window.crypto.getRandomValues(new Uint8Array(16))
+      const textEncoder = new TextEncoder()
+
+      const encryptedMessage = window.crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, textEncoder.encode(message))
+
+      const serializedMessage = serializeUint8Array(new Uint8Array(await encryptedMessage))
+      return { message: serializedMessage, iv: serializeUint8Array(iv) }
+    }
+
+    const decrypt = async (message, key, iv) => {
+      const textDecoder = new TextDecoder()
+
+      return textDecoder.decode(
+        await window.crypto.subtle.decrypt(
+          { name: "AES-GCM", iv: deserializeUint8Array(iv) },
+          key,
+          deserializeUint8Array(message).buffer
+        )
+      )
+    }
+
+    window.onload = async function () {
+      const exportedKey = await exportKey(await generateKey())
+
+      const queryKey = new URLSearchParams(window.location.search).get('key')
+      const importedKey = await importKey(queryKey)
+
+      const iv = document.getElementById('encrypted-content').dataset['iv']
+      const encrypted = document.getElementById('encrypted-content').innerHTML.trim()
+
+      const decrypted = await decrypt(encrypted, importedKey, iv)
+
+      setTimeout(() => {
+        document.getElementById('encrypted-content').innerHTML = decrypted
+        document.getElementById('encrypted-content').classList.remove('encrypted')
+      }, 500)
+    }
+  </script>
+  <div id="encrypted-content" data-iv="MTc0,MTk3,MTc0,MTA0,MTkz,MTY5,MTQ0,MTA0,MTI=,MTI3,MjI5,NTQ=,NjE=,MTI=,MjQ=,MTE4"
+    class="encrypted">
+    MjQx,MjUx,NjU=,MTQ1,OTA=,MjE4,MTY3,MjEz,OTk=,NjY=,MTM=,Ng==,MTQ4,MTcw,NzQ=,MjQ2,OTE=,MTc5,MTA1,MjM0,OTE=,MjA5,MTg1,Mg==,MTg=,Mzk=,MTg4,MjMw,MjE1,NzA=,MTky,MjA4,NTU=,MTU=,MTAz,NzI=,MTMw,Njc=,MTcy,NzY=,MTE2,MjIy,MTc2,Njk=,MjA4,MTYz,NzE=,MTM5,NDY=,MTk5,MjM1,MTM1,NzU=,MTUy,MjIw,MTYw,MTA0,MTcx,MTgx,NzM=,NTE=,MjMy,MTYz,OTM=,MTg3,MTgx,ODI=,MTA5,MTM4,MjEy,Mzg=,MTI5,MjEx,MTg2,MzY=,MTYx,NTM=,NDI=,NjQ=,MTA0,ODQ=,NTY=,MjIy,NzE=,MTI4,OTQ=,MjIx,MTk1,MTQw,MjMx,MTYy,MTI5,MTU5,OTA=,MTYz,MTcw,MTcx,MTAw,OTg=,MTUx,MjI2,MjM1,MTM0,MjI=,MjY=,OTE=,MjM4,ODk=,MjY=,MjU=,MjQ3,MjA=,MjMw,MTI5,OTc=,MTAz,MTg5,MjQz,MTM5,MTg5,MTI4,MjUz,MzE=,OA==,MTQ=,NzE=,MTQ0,NTE=,Mzc=,MTgx,MTU0,NTQ=,MTg0,MjE4,MTMw,NTA=,MTM1,Mjg=,OTU=,MTY=,MjAy,OTA=,MTkx,MjA2,MTQ2,MTYz,MTIz,MTcy,MjM3,Nzk=,MTQz,MzY=,MTE0,MTY5,MjEy,MjQ5,MjQ5,NzI=,MjQ3,MTg4,MTIx,MjUw,MjAz,MTU2,NzA=,MTI0,MTEz,MjMw,OTA=,MjM3,OTM=,OTk=,MjM1,MTU0,NDY=,OTQ=,MTI0,NTU=,MjQ4,ODY=,NQ==,NjQ=,MjQy,MTc2,MTg=,MjI2,MTA3,MTM0,MTc3,OTI=,MTg3,MTQ4,MjQx,MjQz,MTgx,MTk3,MjQ2,MTUy,MTEx,MTk1,MjA5,NDE=,MjE1,MTYx,MjAw,NDk=,MTEz,MTU=,MTg1,MjI4,MTM5,MjQy,MTk0,MTE0,MjAz,MTAw,MjI0,MTQ0,MTUz,MjUy,MzA=,MzA=,MTkw,MTk0,ODY=,NTk=,MTIz,MjI0,MTAx,NDE=,OTQ=,MTI=,MjA5,MTkz,NTY=,MjI4,MTY3,MQ==,MjMx,OTM=,NjA=,MTI3,MjE=,NDY=,MjEz,MTc1,ODE=,MjI1,MA==,Njc=,NA==,NjU=,MjQw,MTYz,MTY=,MTE4,MTQz,MTAy,NjA=,Nzc=,MTU1,MTg=,MTE=,MTU2,MTQ4,NzA=,MjQ5,MjI3,MzI=,MTE0,NjE=,MTYz,MTY5,MTkx,MzU=,MTI5,MTcw,MTc2,MzM=,MTc2,MjAz,MjEx,MTA3,MTEz,Njg=,MjM3,MTYw,MTk4,MjIy,MTMx,MTEx,MTE=,MjI4,MzA=,MTYx,NQ==,MTg1,NjA=,NTI=,MTE0,MQ==,MTAx,NTI=,MTE=,NDM=,NTc=,MTY0,MjI1,MTA0,Nzk=,OTA=,MTU1,MTM0,ODU=,MTA3,NTk=,Mzg=,MjAw,MjU0,MTE5,MTA4,Mjg=,Mw==,Nzg=,MTE5,MTk4,NTQ=,MTEy,MjE0,NTM=,MTgz,OTA=,MTg4,MTcx,MTA1,MTY1,MTU4,MTQ2,OTU=,NjA=,MjEy,MTgw,MTE2,MTUw,NTI=,MzA=,NTI=,MTQ=,MzU=,MjQ0,MTE3,MA==,ODg=,NTg=,MTE2,NDE=,MjAz,NDY=,MTY3,MTY3,ODI=,MjA2,MjMw,MTI5,MTEz,MjUw,MjIz,MTg1,NTc=,MTMx,MTAw,MTky,MTU5,OTI=,MTg1,ODI=,MjAz,MTM3,NDE=,MjQ0,MjI4,MTkw,MTQx,OTk=,MTEy,ODQ=,NTI=,Nzg=,NQ==,Mw==,MTUz,MjQ5,MjU0,MTc1,ODY=,MTYy,MTg5,NDA=,MTM2,MTA4,MjM4,MTE0,NTk=,MjQ=,MjQ=,NDI=,MjQ3,MjEw,MjMy,MTM1,NzU=,MjQ1,MTg=,MjE3,NzY=,MTA3,NDc=,MTc4,MjQy,MjAw,OTc=,MTIz,MTQ0,ODA=,MTAx,MTE2,MA==,MTA4,MTM5,ODM=,MjAy,MTgy,MTkx,NDQ=,MTEw,MjUx,MjM4,MTY0,MjIy,MTA1,MjQ1,OTA=,Nzk=,MTQw,MTgz,MTM5,MTAz,MTQw,MTEz,NjQ=,MjMw,MjQ0,MTQw,NjM=,MTc=,ODk=,MTcx,Mjk=,NTM=,Njg=,NTg=,NTQ=,MjE5,MjA1,MTQx,MjQ2,MTMy,MjMw,Mjk=,MTUy,NjI=,MzU=,MjM3,MTMw,OA==,MjA5,MTU5,NDM=,OA==,MjU0,MTA3,MTE5,Nzk=,OTc=,MjA2,Mzg=,MTI0,Nw==,NjI=,MTky,MTA=,NjA=,NzM=,MTA4,MjU1,MjM2,OTA=,MTc3,NjI=,MjA5,MTcy,MTEx,MTY5,Mjk=,MjMz,MTY2,NDg=,MjE5,MjEz,OTk=,MTA0,NDA=,MjQx,MTk1,MTgx,MjEw,MTg4,MTIz,OTU=,NjY=,MTgz,Mjg=,MTQ2,MTAy,MjU1,Nzk=,MTgw,MTEx,ODM=,MTQ5,MTY3,NTc=,NjQ=,MTA3,MjI3,MTgx,MTM2,NDM=,MTAz,MTM2,NTQ=,NzY=,MTEx,NDc=,MjQ4,MjM5,MjUz,MTU2,MTM3,MTg1,MTk4,NTI=,OTE=,NTE=,MTM0,MjA4,MTQ1,MjIx,MTg4,MTAw,MTg3,MjUy,MTIy,NDU=,MTI=,MjEx,MjI=,MjM=,MTQ4,MjIw,MTY2,MTQ4,Njg=,MTI1,MjIw,Njc=,MjIy,MTY0,NzM=,MTE3,MTk5,MjMw,NzE=,MTMw,MTU1,ODE=,MTAz,MTE2,MjI0,MjEy,MTc4,MjEy,MjAy,MTg=,OTA=,MTQ=,MjA3,MTQx,MTMw,MjUy,MjI2,MTk0,ODE=,MTE1,MTgw,MTAy,NTQ=,MjEz,MjU0,ODI=,MTg3,MTU1,MTQx,MjM5,MTY4,MTUz,MTY=,MjA0,MTY=,MTAx,Nzg=,MzY=,MTc5,MTgz,MTU0,MTcy,MjAz,MTUx,MTgx,MTU2,OTI=,NzY=,MjMy,MTA1,NjY=,MzY=,MjUx,Mzc=,NDA=,NjE=,MTY2,MzU=,MjI5,MTQ1,OTk=,MTYx,MTYw,NDk=,NDc=,MTYz,MTQ1,NTk=,MTky,MTA0,Mg==,MTMx,NzE=,MzI=,OQ==,MTI0,MTI3,MTgy,MjM0,MjIz,MTQ=,MzI=,MjA4,MTYy,MzM=,NjA=,MjI2,MjUw,MjEx,MjI2,Mjc=,MTQ=,MTc=,MTk=,ODc=,Mjc=,Ng==,NTM=,MTY=,MTI0,MTIw,MjQ2,MjU0,MTcy,MTU2,NjA=,MjAy,Nzk=,NDY=,MTIw,MTYx,NDU=,MjA5,NTg=,Njg=,NzI=,MjM3,MjA4,MjMy,MjA4,MjQw,MjQw,MTAw,MTAx,MTMx,MTg2,MjA5,Nzc=,MTYw,NjY
+  </div>
+</div>

@@ -87,6 +87,11 @@ li:first-child {
   padding: 1em;
 }
 
+.encrypted {
+  font-family: 'Courier New', Courier, monospace;
+  word-wrap: break-word;
+}
+
 .index {
   display: flex;
   align-items: center;
