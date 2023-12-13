@@ -15,7 +15,6 @@ title: Encrypt HTML
         const key = await generateKey()
         const { message, iv } = await encrypt(plaintext, key)
 
-        console.log({plaintext, message, iv})
         const encryptedHTML = `
         <div id="encrypted-content" data-iv="${iv}" class="encrypted">
           ${message}
