@@ -1,0 +1,36 @@
+---
+layout: default
+title: Encrypt HTML
+---
+<div>
+  <script src="./cryptography.js" defer></script>
+  <script defer>
+    window.onload = function () {
+      const button = document.getElementById('encrypt-button')
+
+      button.onclick = async () => {
+        const plaintext = document.getElementById('plaintext').value
+        const key = await generateKey()
+        const { message, iv } = await encrypt(plaintext, key)
+
+        console.log({plaintext, message, iv})
+        const encryptedHTML = `
+        <div id="encrypted-content" data-iv="${iv}" class="encrypted">
+          ${message}
+        </div>
+        `
+        document.getElementById('encrypted-html').innerText = encryptedHTML
+        document.getElementById('key').innerText = await exportKey(key)
+      }
+    }
+  </script>
+  <main>
+    <textarea id="plaintext" aria-label="Plaintext HTML to encrypt"></textarea>
+    <button id="encrypt-button">Encrypt</button>
+
+    <h2>Key</h2>
+    <div id="key"></div>
+    <h2>Encrypted message</h2>
+    <div id="encrypted-html" class="encrypted"> </div>
+  </main>
+</div>
