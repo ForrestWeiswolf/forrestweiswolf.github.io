@@ -9,7 +9,9 @@ title: Encrypt HTML
       const button = document.getElementById('encrypt-button')
 
       button.onclick = async () => {
-        const plaintext = document.getElementById('plaintext').value
+        const plaintext = document.getElementById('plaintext')
+          .value
+          .replace('\s*\n\s*')
         const key = await generateKey()
         const { message, iv } = await encrypt(plaintext, key)
 
