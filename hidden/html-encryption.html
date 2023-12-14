@@ -12,7 +12,14 @@ title: Encrypt HTML
         const plaintext = document.getElementById('plaintext')
           .value
           .replace('\s*\n\s*')
-        const key = await generateKey()
+
+        let key = document.getElementById('key').value
+        if(key === '') {
+          key = await generateKey()
+          document.getElementById('key').value = await exportKey(key)
+        } else {
+          key = await importKey(key)
+        }
         const { message, iv } = await encrypt(plaintext, key)
 
         const encryptedHTML = `
@@ -21,7 +28,6 @@ title: Encrypt HTML
         </div>
         `
         document.getElementById('encrypted-html').innerText = encryptedHTML
-        document.getElementById('key').innerText = await exportKey(key)
       }
     }
   </script>
@@ -29,8 +35,8 @@ title: Encrypt HTML
     <textarea id="plaintext" aria-label="Plaintext HTML to encrypt"></textarea>
     <button id="encrypt-button">Encrypt</button>
 
-    <h2>Key</h2>
-    <div id="key"></div>
+    <h2>Key (will generate if left blank)</h2>
+    <input type="text" aria-label="key" id="key"></input>
     <h2>Encrypted message</h2>
     <div id="encrypted-html" class="encrypted"> </div>
   </main>
