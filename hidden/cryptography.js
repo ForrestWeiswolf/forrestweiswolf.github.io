@@ -1,6 +1,14 @@
-const serializeUint8Array = (arr) => [...arr].map(btoa).join(',')
+const splitChunks = (str, chunkSize) => {
+  const result = []
+  for (let i = 0; i < str.length; i += chunkSize) {
+    result.push(str.substr(i, chunkSize))
+  }
+  return result
+}
 
-const deserializeUint8Array = (str) => new Uint8Array(str.split(',').map(atob))
+const serializeUint8Array = (arr) => [...arr].map(btoa).join('')
+
+const deserializeUint8Array = (str) => new Uint8Array(splitChunks(str, 4).map(atob))
 
 const generateKey = () => window.crypto.subtle.generateKey(
   {
