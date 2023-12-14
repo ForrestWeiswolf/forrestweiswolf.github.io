@@ -1,29 +1,8 @@
 ---
-layout: no-navbar
+layout: encrypted
 title: Test
 ---
-<div>
-  <script src="./cryptography.js" defer></script>
-  <script defer>
-    window.onload = async function () {
-      const exportedKey = await exportKey(await generateKey())
-
-      const queryKey = new URLSearchParams(window.location.search).get('key')
-      const importedKey = await importKey(queryKey)
-
-      const iv = document.getElementById('encrypted-content').dataset['iv']
-      const encrypted = document.getElementById('encrypted-content').innerHTML.trim()
-
-      const decrypted = await decrypt(encrypted, importedKey, iv)
-
-      setTimeout(() => {
-        document.getElementById('encrypted-content').innerHTML = decrypted
-        document.getElementById('encrypted-content').classList.remove('encrypted')
-      }, 500)
-    }
-  </script>
-  <div id="encrypted-content" data-iv="MTk=MTc2MjAyNDA=NTM=MjE5Nw==ODE=ODQ=MjE3MTEyNzA=NDY=MjIzOTc=Ng=="
-    class="encrypted">
-    OTg=NzY=MTM=ODU=MjQ4MTMyMzk=MzA=MTI0NjU=MTEwMjMxMTI0NTg=MjE4MzQ=MjQ2MjQ5MzQ=NTQ=MjI2NDE=MTU0MTkzMTkzMTQ=OTQ=MTYyMg==MTgyMTMxMjQzMjk=MjE0OTg=
-  </div>
+<div id="encrypted-content" data-iv="MTk=MTc2MjAyNDA=NTM=MjE5Nw==ODE=ODQ=MjE3MTEyNzA=NDY=MjIzOTc=Ng=="
+  class="encrypted">
+  OTg=NzY=MTM=ODU=MjQ4MTMyMzk=MzA=MTI0NjU=MTEwMjMxMTI0NTg=MjE4MzQ=MjQ2MjQ5MzQ=NTQ=MjI2NDE=MTU0MTkzMTkzMTQ=OTQ=MTYyMg==MTgyMTMxMjQzMjk=MjE0OTg=
 </div>

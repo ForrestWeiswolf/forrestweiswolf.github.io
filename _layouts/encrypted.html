@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" type="text/css" href="../css/main.css">
+  <link rel="stylesheet" type="text/css" href="../css/media-queries.css">
+  <link rel="icon" href="./assets/images/glyph.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script src="./cryptography.js" defer></script>
+  <script defer>
+    window.onload = async function () {
+      const exportedKey = await exportKey(await generateKey())
+
+      const queryKey = new URLSearchParams(window.location.search).get('key')
+      const importedKey = await importKey(queryKey)
+
+      const iv = document.getElementById('encrypted-content').dataset['iv']
+      const encrypted = document.getElementById('encrypted-content').innerHTML.trim()
+
+      const decrypted = await decrypt(encrypted, importedKey, iv)
+
+      setTimeout(() => {
+        document.getElementById('encrypted-content').innerHTML = decrypted
+        document.getElementById('encrypted-content').classList.remove('encrypted')
+      }, 500)
+    }
+  </script>
+</head>
+
+<body>
+  <main>
+    {{ content }}
+  </main>
+</body>
+
+</html>
