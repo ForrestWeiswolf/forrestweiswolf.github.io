@@ -1,0 +1,43 @@
+---
+layout: default
+title: Encryption for hidden pages
+---
+<div>
+  <script src="./cryptography.js" defer></script>
+  <script defer>
+    window.onload = function () {
+      const button = document.getElementById('encrypt-button')
+
+      button.onclick = async () => {
+        const plaintext = document.getElementById('plaintext')
+          .value
+          .replace('\s*\n\s*')
+
+        let key = document.getElementById('key').value
+        if(key === '') {
+          key = await generateKey()
+          document.getElementById('key').value = await exportKey(key)
+        } else {
+          key = await importKey(key)
+        }
+        const { message, iv } = await encrypt(plaintext, key)
+
+        const encryptedHTML = `
+        <div id="encrypted-content" data-iv="${iv}" class="encrypted">
+          ${message}
+        </div>
+        `
+        document.getElementById('encrypted-html').innerText = encryptedHTML
+      }
+    }
+  </script>
+  <main>
+    <textarea id="plaintext" aria-label="Plaintext HTML to encrypt"></textarea>
+    <button id="encrypt-button">Encrypt</button>
+
+    <h2>Key (will generate if left blank)</h2>
+    <input type="text" aria-label="key" id="key"></input>
+    <h2>Encrypted message</h2>
+    <div id="encrypted-html" class="encrypted"> </div>
+  </main>
+</div>

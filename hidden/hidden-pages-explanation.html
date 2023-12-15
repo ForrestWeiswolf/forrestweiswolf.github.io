@@ -1,0 +1,34 @@
+---
+layout: default
+title: Hidden Pages
+---
+<div>
+  <h2>What is this?</h2>
+
+  <p>This section of my site consists of hidden pages, the contents of which can't be read without a key.</p>
+
+  <h2>Why?</h2>
+
+  <p>This site is fully open-source, so normally, even if I don't link to a page anywhere it can be found in the Github
+    repo. However, I wanted to have non-public pages on this site, ones that I could send people a link to, but that couldn't be found otherwise.</p>
+  <p>Also, because I thought it would be interesting.</p>
+
+  <h2>How does it work?</h2>
+
+  <p>Basically, the content of the page is encrypted, and there's some Javascript code that will attempt to decrypt it
+    using a key in the URL's query string. So I can send people I want to share a given page with a link containing the
+    key, like <a href="/hidden/test?key=NTA=OTg=Mjg=Nw==ODg=MjE=MTMzMTEwMTAzMTkxMTE0MjA1MjM5MTA0MTQxMTM4">so</a>, but
+    anyone else will only be able to see the encrypted HTML.</p>
+
+  <p>Each page has a different key, so I can share one without revealing all of them.</p>
+
+  <h2>Is it secure?</h2>
+
+  <p>Not particularly.</p>
+  <p>(I'm aware of the standard advice to not roll your own crypto, and while this does use AES, it uses it in a
+    nonstandard manner. Also, I set it up quickly, without spending a lot of time making sure things are fully secure,
+    so it should be presumed that they are <i>not</i> fully secure.)</p>
+  <p>In most circumstances, I wouldn't recommend an approach like this without much more careful thought about whether
+    it works and is appropriate. In this particular case, however, the stakes are very low, since I don't plan to put
+    anything genuinely secret here, and I thought it would be interesting to try it out.</p>
+</div>
