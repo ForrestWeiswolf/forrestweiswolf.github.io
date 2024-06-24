@@ -5,22 +5,24 @@ title: Hidden Pages
 <div>
   <h2>What is this?</h2>
 
-  <p>This section of my site consists of hidden pages, the contents of which can't be read without a key.</p>
+  <p>There exists a <code>/hidden</code> section of my site, which consists of encrypted pages, the contents of which can't be read without a key.</p>
 
   <h2>Why?</h2>
 
   <p>This site is fully open-source, so normally, even if I don't link to a page anywhere it can be found in the Github
-    repo. However, I wanted to have non-public pages on this site, ones that I could send people a link to, but that couldn't be found otherwise.</p>
+    repo. However, I wanted to have non-public pages on this site, ones that I could send people a link to, but that couldn't be read otherwise.</p>
   <p>Also, because I thought it would be interesting.</p>
 
   <h2>How does it work?</h2>
 
   <p>Basically, the content of the page is encrypted, and there's some Javascript code that will attempt to decrypt it
     using a key in the URL's query string. So when I want to share a hidden page with someone, I can send them a link containing the
-    key, like <a href="/hidden/test?key=NTA=OTg=Mjg=Nw==ODg=MjE=MTMzMTEwMTAzMTkxMTE0MjA1MjM5MTA0MTQxMTM4">so</a>, but
+    key, like <a href="{{ site.url }}/hidden/test?key=NTA=OTg=Mjg=Nw==ODg=MjE=MTMzMTEwMTAzMTkxMTE0MjA1MjM5MTA0MTQxMTM4">so</a>, but
     anyone else will only be able to see the encrypted HTML.</p>
 
   <p>Each page has a different key, so I can share one without revealing all of them.</p>
+
+  <p>The widget I use to encrypt them can be found <a href="{{ site.url }}/hidden/encryption.html"></a>here</a>.</p>
 
   <h2>Is it secure?</h2>
 
