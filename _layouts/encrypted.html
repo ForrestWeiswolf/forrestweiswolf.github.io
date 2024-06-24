@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width initial-scale=1.0">
   <title>{{ page.title }}</title>
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
-  <link rel="stylesheet" type="text/css" href="../css/media-queries.css">
+  <link rel="stylesheet" type="text/css" href="{{ site.url }}/css/main.css">
+  <link rel="stylesheet" type="text/css" href="{{ site.url }}/css/media-queries.css">
   <link rel="icon" href="./assets/images/glyph.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <script src="./cryptography.js" defer></script>
+  <script src="{{ site.url }}/hidden/cryptography.js" defer></script>
   <script defer>
     window.onload = async function () {
       const exportedKey = await exportKey(await generateKey())
