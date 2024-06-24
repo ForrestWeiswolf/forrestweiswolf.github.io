@@ -11,6 +11,10 @@ body {
   padding-bottom: 1em;
 }
 
+p {
+  margin: 0.4em 0;
+}
+
 header {
   padding-bottom: 2em;
   margin-bottom: 2em;
